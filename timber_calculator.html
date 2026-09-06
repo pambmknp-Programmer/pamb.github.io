@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DENR -Mt. Kanla-on Natural Park Calculator Edition v.2</title>
+    <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/e/e8/Logo_of_the_Department_of_Environment_and_Natural_Resources.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original">
+<link rel="stylesheet" href="timber_calculator.css">
+</head>
+<body>
+    <div class="logo-container">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Logo_of_the_Department_of_Environment_and_Natural_Resources.svg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original" alt="DENR Logo" class="top-left-drive-img" id="img1">
+    <img src="https://i.postimg.cc/pLVDdQ6p/New-MKNP-Logo.png" alt="MKNP - LOGO" class="mknp">
+    <div class="app"></div>
+<header>
+<h1>DENR -Mt. Kanla-on Natural Park Calculator Edition v.2</h1>
+<p>Scientific calculations plus forestry timber-volume tools</p>
+</header>
+
+<nav class="tabs">
+<button class="tab-btn active" data-tab="scientific">Scientific</button>
+<button class="tab-btn" data-tab="boardfeet">Board Feet</button>
+<button class="tab-btn" data-tab="standing">Standing Tree (FMB TB 3)</button>
+<button class="tab-btn" data-tab="felled">Round Felled</button>
+</nav>
+
+<section id="scientific" class="tab-content active">
+<div class="calculator">
+<input type="text" id="display" value="0" readonly>
+<div class="buttons">
+<button class="function" onclick="clearDisplay()">AC</button>
+<button class="function" onclick="deleteLast()">DEL</button>
+<button class="function" onclick="percentage()">%</button>
+<button class="function" onclick="toggleSign()">±</button>
+
+<button class="function" onclick="scientific('sin')">sin</button>
+<button class="function" onclick="scientific('cos')">cos</button>
+<button class="function" onclick="scientific('tan')">tan</button>
+<button class="function" onclick="scientific('sqrt')">√</button>
+
+<button class="function" onclick="scientific('square')">x²</button>
+<button class="function" onclick="scientific('cube')">x³</button>
+<button class="function" onclick="scientific('log')">log</button>
+<button class="function" onclick="scientific('ln')">ln</button>
+
+<button onclick="appendNumber('7')">7</button><button onclick="appendNumber('8')">8</button>
+<button onclick="appendNumber('9')">9</button><button class="operator" onclick="chooseOperator('/')">÷</button>
+<button onclick="appendNumber('4')">4</button><button onclick="appendNumber('5')">5</button>
+<button onclick="appendNumber('6')">6</button><button class="operator" onclick="chooseOperator('*')">×</button>
+<button onclick="appendNumber('1')">1</button><button onclick="appendNumber('2')">2</button>
+<button onclick="appendNumber('3')">3</button><button class="operator" onclick="chooseOperator('-')">−</button>
+<button class="zero" onclick="appendNumber('0')">0</button><button onclick="appendDecimal()">.</button>
+<button class="operator" onclick="chooseOperator('+')">+</button><button class="equals" onclick="calculate()">=</button>
+<button class="constant" onclick="useConstant('pi')">π</button>
+<button class="constant" onclick="useConstant('e')">e</button>
+</div></div>
+</section>
+
+<section id="boardfeet" class="tab-content">
+<div class="tool-card">
+<h2>Board Feet Calculator</h2>
+<p class="formula">BF = Thickness(in) × Width(in) × Length(ft) ÷ 12</p>
+<div class="form-grid">
+<label>Thickness (in)<input id="bfThickness" type="number" step="any" min="0"></label>
+<label>Width (in)<input id="bfWidth" type="number" step="any" min="0"></label>
+<label>Length (ft)<input id="bfLength" type="number" step="any" min="0"></label>
+</div>
+<div class="actions"><button class="calculate-btn" onclick="calculateBoardFeet()">Calculate</button><button class="clear-btn" onclick="clearTimberForm('bf')">Clear</button></div>
+<div id="bfResult" class="result">Result: —</div>
+</div>
+</section>
+
+<section id="standing" class="tab-content">
+<div class="tool-card">
+<h2>Standing Tree Volume</h2>
+<p class="formula">FMB TB No. 3: V = coefficient × (D² × H)</p>
+<p class="note">D = DBH/DAB in centimeters. H = Merchantable Height (MH) in meters. Select the applicable FMB regional equation and species group.</p>
+<div class="form-grid">
+<label>DBH / DAB (cm)
+<input id="stDbh" type="number" step="any" min="0" placeholder="e.g. 37"></label>
+
+<label>Merchantable Height (m)
+<input id="stHeight" type="number" step="any" min="0" placeholder="e.g. 9"></label>
+
+<label>Region
+<select id="stRegion">
+<option value="">Select region</option>
+<option value="northern">Northern Luzon — Regions 1, 2 & 3</option>
+<option value="southern">Southern Luzon — Regions 4 & 5 (except Palawan)</option>
+<option value="westernVisayas">Western Visayas — Regions 6, 7 & Palawan</option>
+<option value="easternVisayas">Eastern Visayas — Region 8 & Bohol</option>
+<option value="easternMindanao">Eastern Mindanao — Regions 11 & 13</option>
+<option value="centralMindanao">Central Mindanao — Regions 10, 12 & ARMM</option>
+<option value="westernMindanao">Western Mindanao — Region 9</option>
+</select>
+</label>
+
+<label>Species Group
+<select id="stSpecies">
+<option value="">Select species group</option>
+<option value="dipterocarp">Dipterocarp</option>
+<option value="nonDipterocarp">Non-Dipterocarp</option>
+</select>
+</label>
+</div>
+<div class="actions"><button class="calculate-btn" onclick="calculateStanding()">Calculate</button><button class="clear-btn" onclick="clearTimberForm('st')">Clear</button></div>
+<div id="stResult" class="result">Result: —</div>
+</div>
+</section>
+
+<section id="felled" class="tab-content">
+<div class="tool-card">
+<h2>Round Felled Tree — Smalian</h2>
+<p class="formula">V = π ÷ 8 × (D₁² + D₂²) × L</p>
+<p class="note">Enter both end diameters and log length in meters.</p>
+<div class="form-grid">
+<label>Large-end D₁ (m)<input id="rfD1" type="number" step="any" min="0"></label>
+<label>Small-end D₂ (m)<input id="rfD2" type="number" step="any" min="0"></label>
+<label>Log Length (m)<input id="rfLength" type="number" step="any" min="0"></label>
+</div>
+<div class="actions"><button class="calculate-btn" onclick="calculateFelled()">Calculate</button><button class="clear-btn" onclick="clearTimberForm('rf')">Clear</button></div>
+<div id="rfResult" class="result">Result: —</div>
+</div>
+</section>
+</div>
+<script src="timber_calculator1.js"></script>
+</body>
+</html>

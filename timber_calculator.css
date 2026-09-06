@@ -1,0 +1,76 @@
+
+#img1{float: left;
+        margin: 5px;}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{min-height:100vh;padding:30px 15px;
+    background-image: url("https://www.pwc.com/ph/en/gems/assets/images/06-mt-kanlaon.jpg");
+    background-color: #b2e50d;
+    background:hsl(135, 83%, 20%);
+    font-family:Arial,sans-serif;
+    color:#000000}
+.app{width:min(900px,100%);
+    margin:auto} header{text-align:center;margin-bottom:20px}
+header h1{margin-bottom:7px;
+    font-weight: bold;
+    color: #f9f6f6;} header p{color:#f9f6f6}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);
+         gap:8px;margin-bottom:15px}
+.tab-btn{height:50px;border:0;
+         border-radius:10px;
+         background:#444;color:#fff;cursor:pointer;font-size:15px}
+.tab-btn:hover,.tab-btn.active{background:#28a745}
+.tab-content{display:none}
+.tab-content.active{display:block}
+.calculator{width:min(430px,100%);
+    margin:auto;padding:20px;
+    background:#222;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+#display{width:100%;height:80px;
+    margin-bottom:15px;padding:10px;
+    border:0;border-radius:10px;background:#eee;
+    text-align:right;font-size:34px;color:#222}
+.buttons{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+button{min-height:58px;border:0;border-radius:11px;
+    background:#444;color:#fff;font-size:19px;cursor:pointer}
+button:hover{filter:brightness(1.12)}
+button:active{transform:scale(.97)}
+.operator{background:#ff9500}
+.function{background:#777}.equals{background:#28a745}
+.constant{background:#555}.zero{grid-column:span 2}
+.tool-card{max-width:760px;
+    margin:auto;padding:25px;
+    background:#fff;border-radius:16px;
+    box-shadow:0 8px 25px rgba(0,0,0,.12)}
+.tool-card h2{margin-bottom:10px}
+.formula{padding:12px;margin:12px 0;
+    background:#f1f1f1;border-radius:8px;font-weight:bold}
+.note{margin-bottom:18px;
+    color:#666;line-height:1.5}
+    .form-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+label{display:flex;flex-direction:column;
+    gap:7px;font-weight:bold}
+    label input{padding:13px;border:1px solid #ccc;border-radius:8px;font-size:16px}
+.actions{display:flex;gap:10px;margin-top:20px}
+.calculate-btn,.clear-btn{min-height:48px;padding:0 20px;font-size:16px}
+.calculate-btn{background:#28a745}
+.clear-btn{background:#666}.result{margin-top:20px;padding:18px;border-radius:10px;
+    background:#f2f2f2;font-size:18px;font-weight:bold;line-height:1.7}
+@media(max-width:650px){.tabs{grid-template-columns:repeat(2,1fr)}
+.form-grid{grid-template-columns:1fr}.calculator{padding:15px}}
+
+.top-left-drive-img {
+        width: 70px;
+   display: block;
+    margin: 10px;
+    
+}
+.mknp {
+    width: 80px;
+
+    display: none;
+    margin: 0%;
+    padding: 0px;
+   
+    
+}
